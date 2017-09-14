@@ -30,3 +30,103 @@ plot(pressure)
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
 
 v<-c("Stately,","plump","Buck","Mulligan","came","from","the","stairhead,","bearing","a","bowl","of","lather","on","which","a","mirror","and","a","razor","lay","crossed.")
+# Ulysses Challenge!!!
+
+## First, put the quote in R
+quote<-"Stately, plump Buck Mulligan came from the stairhead, bearing a bowl of lather on which a mirror and a razor lay crossed."
+
+## Keeping the quotation marks of the quote!
+quote2<-gsub("[[:punct:]]", "",quote) #keeping the quotes!
+
+quote2
+
+## Unlisting... of words in the quote
+quote3<-c(unlist(strsplit(quote2, " ")))
+
+quote3
+
+## Extract every third word from this beautiful quote
+extractedwords<-quote3[seq(from=1, to=22,by=3)]
+
+extractedwords
+
+## Remove the quote marks from R notation
+noquote(extractedwords)->finalextractedwords
+
+finalextractedwords
+
+# Primate List Challenge
+
+## Take a bottom-up approach to this assignment (...meaning lists within lists)
+
+### Organize the Strepsirhini!
+
+Lemuroidea<-list("Cheirogaleidae","Lepilemuridae","Indriidae","Lemuridae","Daubentoniidae")
+names(Lemuroidea)<-c("Cheirogaleidae","Lepilemuridae","Indriidae","Lemuridae","Daubentoniidae")
+Lorisoidea<-list("Lorisidae","Galagidae")
+names(Lorisoidea)<-c("Lorisidae","Galagidae")
+Strepsirhini<-list(Lemuroidea,Lorisoidea)
+names(Strepsirhini)<-c("Lemuroidea","Lorisoidea")
+
+### Now... organize the Haplorhini!
+
+Platyrrhini<-list("Cebidae","Atelidae","Pitheciidae")
+names(Platyrrhini)<-c("Cebidae","Atelidae","Pitheciidae")
+Catarrhini<-list("Cercopithecidae","Hylobatidae","Hominidae")
+names(Catarrhini)<-c("Cercopithecidae","Hylobatidae","Hominidae")
+Anthropoidea<-list(Platyrrhini,Catarrhini)
+names(Anthropoidea)<-c("Platyrrhini","Catarrhini")
+Tarsioidea<-list("Tarsiidae")
+names(Tarsioidea)<-c("Tarsiidae")
+Haplorhini<-list(Anthropoidea,Tarsioidea)
+names(Haplorhini)<-c("Anthropoidea","Tarioidea")
+
+## Now... unite them! Primates Rule!
+
+Primates<-list(Strepsirhini,Haplorhini)
+names(Primates)<-c("Strepsirhini","Haplorhini")
+Primates
+
+# Challenge 3- Matrix to Data Frame
+
+## Step 1: Make da Matrix
+
+matrix<- matrix(data=c(3, 0, 1 ,23, 1, 2, 33, 1, 1, 42, 0, 1, 41, 0, 2), nrow=5, ncol=3, byrow=TRUE)
+
+matrix
+
+## Step 2: Coerce the Matrix to a Data Frame... It's a hard-knock life for matrices
+
+data.frame(matrix)->dataframe
+
+dataframe 
+
+## Step 3: Coerce the second column to be logical-valued. Isn't it just so logical? 
+
+as.logical(dataframe$X2)->logical
+
+logical
+
+## Step 4: Coerce the third column to be factor-valued.... Factor me into your great R plans!
+
+as.factor(dataframe$X3)->factor
+
+factor
+
+## Step 5: Now... let's remove the previous thing a lings...
+
+dataframe[,-2:-3]->clean.dataframe
+
+clean.dataframe
+
+## Step 6: Mix n' Match... Bind the two new vectors with the first column of the original dataframe
+
+cbind(clean.dataframe,logical,factor)->bounded
+
+bounded
+
+str(bounded)
+str(clean.dataframe)
+str(logical)
+str(factor)
+
